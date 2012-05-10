@@ -30,8 +30,9 @@ do_create_sb_stream() {
     dd if=${WORKDIR}/imx23_linux.sb of=${WORKDIR}/mx23.img ibs=512 seek=4 conv=sync,notrunc
 }
 
-addtask create_sb_stream after do_populate_sysroot
+addtask create_sb_stream after do_populate_sysroot before do_deploy
 
 do_deploy_append() {
+  install -d ${DEPLOY_DIR_IMAGE}
   install ${WORKDIR}/mx23.img ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.mx23.img
 }
