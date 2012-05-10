@@ -1,0 +1,40 @@
+// Stolen from imx-bootlets-10.05.02
+
+// STMP378x ROM command script to load and run Linux kernel
+options {
+        driveTag = 0x00;
+        flags = 0x01;
+}
+sources {
+        power_prep="@STAGING_DATADIR@/imx-bootlets/power_prep";
+        sdram_prep="@STAGING_DATADIR@/imx-bootlets/boot_prep";
+        linux_prep="@STAGING_DATADIR@/imx-bootlets/linux_prep";
+        zImage = "@STAGING_KERNEL_DIR@/zImage";
+}
+ 
+section (0) {
+ 
+        //----------------------------------------------------------
+        // Power Supply initialization
+        //----------------------------------------------------------
+        load power_prep;
+        call power_prep;
+ 
+        //----------------------------------------------------------
+        // SDRAM initialization
+        //----------------------------------------------------------
+        load sdram_prep;
+        call sdram_prep;
+ 
+        //----------------------------------------------------------
+        // Prepare to boot Linux
+        //----------------------------------------------------------
+        load linux_prep;
+        call linux_prep;
+ 
+        //----------------------------------------------------------
+        //  Load ans start Linux kernel
+        //----------------------------------------------------------
+        load zImage > 0x40008000;
+        jump linux_prep;
+}
