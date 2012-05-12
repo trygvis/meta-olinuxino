@@ -9,7 +9,7 @@ sources {
         power_prep="@STAGING_DATADIR@/imx-bootlets/power_prep";
         sdram_prep="@STAGING_DATADIR@/imx-bootlets/boot_prep";
         linux_prep="@STAGING_DATADIR@/imx-bootlets/linux_prep";
-        zImage = "@STAGING_KERNEL_DIR@/zImage";
+        zImage = "image/kernel/zImage";
 }
  
 section (0) {
