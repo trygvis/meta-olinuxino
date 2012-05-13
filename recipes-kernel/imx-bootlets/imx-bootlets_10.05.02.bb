@@ -18,8 +18,6 @@ do_compile() {
 }
 
 do_install() {
-#    echo "D=${D}"
-#    echo "STAGING_DATADIR=${STAGING_DATADIR}"
     install -d ${STAGING_DATADIR}/imx-bootlets
     install ${S}/boot_prep/boot_prep ${STAGING_DATADIR}/imx-bootlets/
     install ${S}/power_prep/power_prep ${STAGING_DATADIR}/imx-bootlets/
