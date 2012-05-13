@@ -6,7 +6,9 @@ DEPENDS += "imx-bootlets \
             elftosb \
            "
 
+# For the smsc95xx patch, see http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=f4e8ab7cc4e819011ca6325e54383b3da7a5d130
 SRC_URI += "file://olinuxino.patch \
+            file://smsc95xx.patch \
             file://linux_prebuilt.db \
            "
 
